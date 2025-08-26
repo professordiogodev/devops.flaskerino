@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the app code
 COPY . .
 
-# Expose the default port (80) – can be overridden at runtime
+# Expose the default port (8080) – can be overridden at runtime
 EXPOSE 8080
 
 # Run the application
