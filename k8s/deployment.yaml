@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskerino-deployment
+  labels:
+    app: flaskerino
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskerino
+  template:
+    metadata:
+      labels:
+        app: flaskerino
+    spec:
+      containers:
+      - name: flaskerino
+        image: pokfinner/flaskerino:latest
+        ports:
+        - containerPort: 80
