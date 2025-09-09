@@ -19,7 +19,7 @@ def greeting():
 @app.route("/healthcheck")
 def healthcheck():
     time.sleep(6)  # Simulate processing delay
-    return "It works!", 200
+    return "It slowly works!", 200
 
 if __name__ == "__main__":
     # 0.0.0.0 lets Docker expose the service
