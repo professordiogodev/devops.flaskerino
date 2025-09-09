@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+import time
 
 app = Flask(__name__)
 
@@ -11,11 +12,13 @@ NUMBER       = os.getenv("NUMBER", "0")                # e.g. "1"
 # Main endpoint — path is dynamic
 @app.route(DESIRED_PATH)
 def greeting():
-    return f"<h1>Hello from cool server {DESIRED_PATH} number {NUMBER}!</h1>"
+    time.sleep(6)  # Simulate processing delay
+    return f"<h1>(Slow) Hello from cool server {DESIRED_PATH} number {NUMBER}!</h1>"
 
 # Simple health-check (always on /healthcheck)
 @app.route("/healthcheck")
 def healthcheck():
+    time.sleep(6)  # Simulate processing delay
     return "It works!", 200
 
 if __name__ == "__main__":
