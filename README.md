@@ -13,11 +13,26 @@ A tiny Flask server that demonstrates how environment variables can tweak runtim
 ## Local run (Debian/Ubuntu)
 
 ```bash
-# 1. Install Python & pip (if needed)
-sudo apt update && sudo apt install python3 python3-pip -y
+# Clone the repo
+git clone http://github.com/professordiogodev/devops.flaskerino
+cd devops.flaskerino
 
-# 2. Install dependencies
+# install venv on ubuntu if not available
+sudo apt update
+sudo apt install python3.12-venv -y
+
+# Create a python virtual environment and activate it
+python3 -m venv venv
+source ./venv/bin/activate
+
+# Install the packages
 pip install -r requirements.txt
 
-# 3. Run the server (override env vars as you like)
-DESIRED_PATH="/hello" PORT=8080 NUMBER=1 python app.py
+# Define variables
+export DESIRED_PATH="/"
+export PORT=4444
+export NUMBER=50
+
+# Run the server
+python3 app.py
+```
