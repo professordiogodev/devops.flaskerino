@@ -18,4 +18,4 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           port: ${{ secrets.EC2_PORT }}
-          script: whoami
+          script: echo "This is user $(whoami)."
