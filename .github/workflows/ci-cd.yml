@@ -9,8 +9,11 @@ jobs:
   deploy-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Starting Script
-        run: echo "Hello World!"
+      # Clone the code in the runner (temporary VM)
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      # Run all steps to run flaskerino as a service
       - name: Execute remote SSH commands using SSH key
         uses: appleboy/ssh-action@v1
         with:
@@ -20,15 +23,22 @@ jobs:
           port: ${{ secrets.EC2_PORT }}
           script: |
             # --- install packages ---
-            sudo apt update -y && sudo apt install -y python3 python3-pip git
+            sudo apt update -y && sudo apt install -y python3 python3-pip python3.12-venv git
 
             # --- clone repo ---
             git clone https://github.com/professordiogodev/devops.flaskerino
 
             # Install Python Dependencies
             cd devops.flaskerino
+            python3 -m venv .venv
+            source .venv/bin/activate
             pip3 install -r requirements.txt
 
-            # --- Create a systemd service ---
-            echo "creating service..."
+            # --- Create/Place systemd service ---
+            cp flaskerino.service /etc/systemd/system/flaskerino.service
+
+            # --- Restart Service Daemon ---
+            sudo systemctl daemon-reload
+            sudo systemctl enable flaskerino
+            sudo systemctl restart flaskerino
 

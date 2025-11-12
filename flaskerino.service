@@ -1,0 +1,16 @@
+[Unit]
+Description=Flaskerino Web Server
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/devops.flaskerino
+Environment="PATH=/home/ubuntu/devops.flaskerino/.venv/bin"
+ExecStart=/home/ubuntu/devops.flaskerino/.venv/bin/python app.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
