@@ -1,0 +1,13 @@
+name: Demo Workflow
+
+on: 
+  push:
+    branches:
+      - github-actions-demo
+
+jobs:
+  deploy-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Starting Script
+        run: echo "Hello World!"
