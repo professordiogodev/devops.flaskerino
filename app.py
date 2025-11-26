@@ -62,7 +62,7 @@ def metrics():
 def healthcheck():
     pending.labels(NUMBER).inc()
     try:
-        time.sleep(6)
+        time.sleep(3)
         return "It slowly works!", 200
     finally:
         pending.labels(NUMBER).dec()
@@ -71,7 +71,7 @@ def healthcheck():
 def greeting():
     pending.labels(NUMBER).inc()
     try:
-        time.sleep(6)
+        time.sleep(3)
         return f"<h1>(Slow) Hello from cool server {DESIRED_PATH} number {NUMBER}!</h1>"
     finally:
         pending.labels(NUMBER).dec()
