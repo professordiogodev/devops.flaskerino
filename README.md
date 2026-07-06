@@ -7,7 +7,7 @@ A tiny Flask server that demonstrates how environment variables can tweak runtim
 | Variable       | Purpose                                         | Default |
 | -------------- | ----------------------------------------------- | ------- |
 | `DESIRED_PATH` | Path the server listens on (e.g. `/hello`)      | `/`     |
-| `PORT`         | Port Flask binds to inside the container         | `80`    |
+| `PORT`         | Port Flask binds to inside the container         | `8080`    |
 | `NUMBER`       | Arbitrary number displayed in the greeting       | `0`     |
 
 ## Local run (Debian/Ubuntu)
