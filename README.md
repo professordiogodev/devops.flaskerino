@@ -19,7 +19,7 @@ cd devops.flaskerino
 
 # install venv on ubuntu if not available
 sudo apt update
-sudo apt install python3.12-venv -y
+sudo apt install python3-venv -y
 
 # Create a python virtual environment and activate it
 python3 -m venv venv
